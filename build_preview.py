@@ -17,7 +17,7 @@ def embed_images(text):
     return re.sub(r"assets/[\w-]+\.(?:webp|png|jpg)", embed_asset, text)
 
 
-html = (ROOT / "index.html").read_text()
+html = embed_images((ROOT / "index.html").read_text())
 css = embed_images((ROOT / "style.css").read_text())
 js = embed_images((ROOT / "app.js").read_text())
 html = html.replace('<link rel="stylesheet" href="style.css">', f"<style>{css}</style>")
